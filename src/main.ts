@@ -8,7 +8,9 @@ import * as env from './config/env';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors({ origin: 'http://localhost:4200' });
+  app.enableCors({
+    origin: ['http://localhost:4200', 'https://habi-uk.netlify.app']
+  });
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
