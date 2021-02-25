@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
+import { AuthModule } from './auth/auth.module';
 import { databaseUriFactory } from './config/database-uri-factory';
 import { HabitsModule } from './habits/habits.module';
 
@@ -8,10 +9,11 @@ import { HabitsModule } from './habits/habits.module';
   imports: [
     HabitsModule,
     MongooseModule.forRootAsync({
-      useFactory: databaseUriFactory,
+      useFactory: databaseUriFactory
     }),
+    AuthModule
   ],
   controllers: [],
-  providers: [],
+  providers: []
 })
 export class AppModule {}
