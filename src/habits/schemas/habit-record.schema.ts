@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
+import { normaliseResponse } from 'src/common/utils/normalise-response.util';
 
 @Schema()
 export class HabitRecord extends Document {
@@ -12,10 +13,4 @@ export class HabitRecord extends Document {
 
 export const HabitRecordSchema = SchemaFactory.createForClass(HabitRecord);
 
-HabitRecordSchema.set('toJSON', {
-  virtuals: true,
-  versionKey: false,
-  transform: (_doc, ret) => {
-    delete ret._id;
-  }
-});
+normaliseResponse(HabitRecordSchema);
