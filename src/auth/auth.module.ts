@@ -4,10 +4,11 @@ import { DatabaseErrorsService } from 'src/common/services/database-errors/datab
 
 import { AuthController } from './controllers/auth/auth.controller';
 import { User, UserSchema } from './schemas/user.schema';
+import { AuthService } from './services/auth/auth.service';
 
 @Module({
   controllers: [AuthController],
-  providers: [DatabaseErrorsService],
+  providers: [DatabaseErrorsService, AuthService],
   imports: [
     MongooseModule.forFeature([
       {
@@ -15,6 +16,7 @@ import { User, UserSchema } from './schemas/user.schema';
         schema: UserSchema
       }
     ])
-  ]
+  ],
+  exports: [AuthService]
 })
 export class AuthModule {}

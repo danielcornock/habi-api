@@ -7,6 +7,9 @@ export class HabitRecord extends Document {
   @Prop({ type: Types.ObjectId, ref: 'HabitTemplate' })
   template: string;
 
+  @Prop({ type: Types.ObjectId, ref: 'User' })
+  user: string;
+
   @Prop({ type: String })
   completedOn: string;
 }
