@@ -68,6 +68,6 @@ export class HabitRecordController {
     @Param('id') id: string,
     @UserId() user: string
   ): Promise<void> {
-    await this.habitRecordRepo.findOneAndDelete({ id, user });
+    await this.habitRecordRepo.findOneAndDelete({ _id: id, user });
   }
 }

@@ -19,7 +19,6 @@ export class AuthGuard implements CanActivate {
     } = context.switchToHttp().getRequest();
 
     const decodedJwt = await this.getDecodedJwt(request.headers.authorization);
-    console.log(decodedJwt);
 
     request.user = await this.authService.getUserById((decodedJwt as any).id);
 
@@ -32,7 +31,6 @@ export class AuthGuard implements CanActivate {
 
       return decodedJwt;
     } catch (e) {
-      console.log(e);
       throw new UnauthorizedException(
         'Unfortunately your session has expired. Please log in again.'
       );
