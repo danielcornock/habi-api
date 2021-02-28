@@ -13,7 +13,7 @@ export class HabitTemplate extends Document {
   @Prop({ type: String, required: true })
   color: string;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: false })
   flair: string;
 }
 
