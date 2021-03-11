@@ -15,6 +15,9 @@ export class HabitTemplate extends Document {
 
   @Prop({ type: String, required: false })
   flair: string;
+
+  @Prop({ type: Boolean })
+  isPaused: boolean;
 }
 
 export const HabitTemplateSchema = SchemaFactory.createForClass(HabitTemplate);
