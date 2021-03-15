@@ -63,17 +63,17 @@ export class HabitTemplateController {
   }
 
   @Patch('/:id')
-  public async setIsPaused(
+  public async editTemplate(
     @UserId() user: string,
     @Param('id') id: string,
     @Body() payload: HabitTemplateUpdate
   ): HttpResponse<HabitTemplate> {
     const data = await this.habitTemplateRepo.findOneAndUpdate(
       { _id: id, user },
-      { isPaused: payload.isPaused },
+      payload,
       { new: true }
     );
 
-    return { data: data };
+    return { data };
   }
 }
